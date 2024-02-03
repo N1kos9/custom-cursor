@@ -3,22 +3,25 @@
 import { useState, useEffect, useRef } from "react";
 
 const CursorTwo = () => {
-  const requestRef = useRef();
-  const cursorDotPosRef = useRef({ x: 0, y: 0 });
-  const [cursorOutlinePos, setCursorOutlinePos] = useState({ x: 0, y: 0 });
+  const requestRef = useRef<number | null>(null);
+  const cursorDotPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [cursorOutlinePos, setCursorOutlinePos] = useState<{
+    x: number;
+    y: number;
+  }>({ x: 0, y: 0 });
 
-  const moveCursor = (e) => {
+  const moveCursor = (e: MouseEvent) => {
     cursorDotPosRef.current = { x: e.clientX, y: e.clientY };
   };
 
   const followCursor = () => {
     const { x, y } = cursorDotPosRef.current;
-    // Update cursor-outline position directly to avoid re-rendering
-    const dotEl = document.querySelector(".cursor-dot");
+    // Use type assertion to HTMLElement
+    const dotEl = document.querySelector(".cursor-dot") as HTMLElement;
     if (dotEl) {
       dotEl.style.transform = `translate(${x}px, ${y}px)`;
     }
-    // Smoothly update the cursor outline position
+    // Smoothly update the cursor outline position.
     setCursorOutlinePos((prevPos) => {
       const dx = x - prevPos.x;
       const dy = y - prevPos.y;
@@ -37,7 +40,7 @@ const CursorTwo = () => {
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      if (requestRef.current) {
+      if (requestRef.current !== null) {
         cancelAnimationFrame(requestRef.current);
       }
     };
@@ -61,8 +64,8 @@ const CursorTwo = () => {
         className="cursor-outline"
         style={{
           position: "fixed",
-          left: cursorOutlinePos.x,
-          top: cursorOutlinePos.y,
+          left: `${cursorOutlinePos.x}px`,
+          top: `${cursorOutlinePos.y}px`,
           width: "35px",
           height: "35px",
           borderRadius: "50%",

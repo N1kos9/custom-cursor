@@ -40,5 +40,5 @@ body {
   transition: transform 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Adjust timing and curve to control the delay and speed */
 
 .hovering {
-  transform: scale(3); /* Example transformation on hover */
+  transform: scale(5); /* Example transformation on hover */
 }
