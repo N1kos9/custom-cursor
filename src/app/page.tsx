@@ -43,16 +43,18 @@ export default function Home() {
         <h1>
           Mouse Position: X: {cursorX}, Y: {cursorY}
         </h1>
-        <ul className="">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <button>About</button>
-          </li>
-          <li>
-            <input type="button" value="Contact" />
-          </li>
+        <ul className="p-12 flex flex-col items-center">
+          <a href="#" className="p-8 mt-12 border border-white rounded-lg">
+            I am an anchor tag
+          </a>
+          <button className="mt-12 p-8 border border-white rounded-lg">
+            I am a button
+          </button>
+          <input
+            type="button"
+            className="p-8 mt-12 border boder-white rounded-lg"
+            value="I am an input"
+          />
         </ul>
       </main>
     </>
