@@ -3,28 +3,33 @@
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [cursorX, setCursorX] = useState(0);
-  const [cursorY, setCursorY] = useState(0);
-  const [isHovering, setIsHovering] = useState(false);
+  // State definitions
+  const [cursorX, setCursorX] = useState<number | null>(null);
+  const [cursorY, setCursorY] = useState<number | null>(null);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
+    const updateMousePosition = (e: MouseEvent) => {
       const { pageX, pageY } = e;
       setCursorX(pageX);
       setCursorY(pageY);
 
       const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
       const hoverableElements = ["A", "BUTTON", "INPUT"]; // Define hoverable elements
-      const isHoverElement =
-        elemBelow && hoverableElements.includes(elemBelow.tagName);
 
-      setIsHovering(isHoverElement);
+      // Ensure isHoverElement is strictly a boolean value
+      const isHoverElement =
+        elemBelow !== null && hoverableElements.includes(elemBelow.tagName);
+
+      setIsHovering(isHoverElement); // isHoverElement is guaranteed to be boolean here
     };
 
-    document.addEventListener("mousemove", updateMousePosition);
+    // Attach event listener
+    window.addEventListener("mousemove", updateMousePosition);
 
+    // Cleanup function to remove event listener
     return () => {
-      document.removeEventListener("mousemove", updateMousePosition);
+      window.removeEventListener("mousemove", updateMousePosition);
     };
   }, []);
 
