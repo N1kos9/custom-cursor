@@ -4,13 +4,41 @@
 
 body {
   background-color: black;
-  cursor: none;
 }
 .cursor {
   @apply fixed w-5 h-5 bg-white rounded-full pointer-events-none mix-blend-difference;
   transition: transform 0.2s ease;
 }
+/* .cursor-dot {
+  @apply fixed w-5 h-5 bg-white/[0.4] rounded-full pointer-events-none mix-blend-difference;
+  transition: transform 0.2s ease;
+}
+.cursor-outline {
+  @apply fixed w-5 h-5 bg-red-500 opacity-20 rounded-full pointer-events-none mix-blend-difference;
+  transition: transform 0.2s ease;
+} */
+/* .cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  mix-blend-mode: difference;
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  transition: transform 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Adjust timing and curve to control the delay and speed */
 
 .hovering {
-  transform: scale(5);
+  transform: scale(3); /* Example transformation on hover */
 }
