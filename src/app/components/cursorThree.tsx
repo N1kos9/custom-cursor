@@ -3,11 +3,16 @@
 import { useRef, useState, useEffect } from "react";
 
 const CursorThree = () => {
-  const requestRef = useRef();
-  const cursorPosRef = useRef({ x: 0, y: 0 });
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  // Specify the type for requestRef to be a number, initializing with null and asserting it as a number because requestAnimationFrame returns a number.
+  const requestRef = useRef<number | null>(null);
+  const cursorPosRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
-  const moveCursor = (e) => {
+  // Explicitly type the parameter 'e' as MouseEvent
+  const moveCursor = (e: MouseEvent) => {
     cursorPosRef.current = { x: e.clientX, y: e.clientY };
   };
 
@@ -16,8 +21,9 @@ const CursorThree = () => {
     setCursorPos((prevPos) => {
       const dx = x - prevPos.x;
       const dy = y - prevPos.y;
+      // Adjust the multiplier for speed/elasticity
       return {
-        x: prevPos.x + dx * 0.1, // Adjust the multiplier for speed/elasticity
+        x: prevPos.x + dx * 0.1,
         y: prevPos.y + dy * 0.1,
       };
     });
@@ -31,7 +37,7 @@ const CursorThree = () => {
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      if (requestRef.current) {
+      if (requestRef.current !== null) {
         cancelAnimationFrame(requestRef.current);
       }
     };
@@ -42,8 +48,8 @@ const CursorThree = () => {
       className="cursor-ring"
       style={{
         position: "fixed",
-        left: cursorPos.x,
-        top: cursorPos.y,
+        left: `${cursorPos.x}px`,
+        top: `${cursorPos.y}px`,
         width: "35px", // Ring size
         height: "35px",
         borderRadius: "50%",
@@ -54,4 +60,5 @@ const CursorThree = () => {
     />
   );
 };
+
 export default CursorThree;
