@@ -56,6 +56,7 @@ const CursorThree = () => {
         border: "2px solid white", // Ring appearance
         transform: "translate(-50%, -50%)", // Centers the ring on the cursor
         pointerEvents: "none", // Ensures the cursor doesn't interfere with other elements
+        mixBlendMode: "difference",
       }}
     />
   );

@@ -13,7 +13,7 @@ const page = () => {
         </div>
         <div className="flex flex-col items-center justify-center mt-44 p-24 text-white cursor-none">
           <h1 className="text-4xl">Second sample</h1>
-          <button className="text-2xl rounded-lg border p-4 mt-10">
+          <button className="text-2xl rounded-lg border p-4 mt-10 hover:bg-white hover:text-black duration-300">
             Hover me
           </button>
         </div>

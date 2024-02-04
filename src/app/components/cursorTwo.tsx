@@ -58,6 +58,7 @@ const CursorTwo = () => {
           backgroundColor: "white",
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
+          mixBlendMode: "difference",
         }}
       />
       <div
@@ -72,6 +73,7 @@ const CursorTwo = () => {
           border: "2px solid white",
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
+          mixBlendMode: "difference",
         }}
       />
     </>
