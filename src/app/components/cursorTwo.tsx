@@ -66,10 +66,10 @@ const CursorTwo = () => {
           position: "fixed",
           left: `${cursorOutlinePos.x}px`,
           top: `${cursorOutlinePos.y}px`,
-          width: "35px",
-          height: "35px",
+          width: "45px",
+          height: "45px",
           borderRadius: "50%",
-          border: "1px solid white",
+          border: "2px solid white",
           pointerEvents: "none",
           transform: "translate(-50%, -50%)",
         }}

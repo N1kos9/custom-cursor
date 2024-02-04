@@ -4,10 +4,22 @@
 
 body {
   background-color: black;
+  cursor: default;
 }
 .cursor {
-  @apply fixed w-5 h-5 bg-white rounded-full pointer-events-none mix-blend-difference;
+  @apply fixed w-5 h-5 bg-white rounded-full pointer-events-none mix-blend-difference cursor-none;
   transition: transform 0.2s ease;
+}
+
+.first-page * {
+  cursor: none !important;
+}
+
+.second-page * {
+  cursor: none !important;
+}
+.third-page * {
+  cursor: none !important;
 }
 /* .cursor-dot {
   @apply fixed w-5 h-5 bg-white/[0.4] rounded-full pointer-events-none mix-blend-difference;
