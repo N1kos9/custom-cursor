@@ -9,18 +9,17 @@ const CursorOne = () => {
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      const { pageX, pageY } = e;
-      setCursorX(pageX);
-      setCursorY(pageY);
+      const { clientX, clientY } = e;
+      setCursorX(clientX);
+      setCursorY(clientY);
 
-      const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
+      const elemBelow = document.elementFromPoint(clientX, clientY);
       const hoverableElements = ["A", "BUTTON", "INPUT"]; // Define hoverable elements
 
-      // Ensure isHoverElement is strictly a boolean value
       const isHoverElement =
         elemBelow !== null && hoverableElements.includes(elemBelow.tagName);
 
-      setIsHovering(isHoverElement); // isHoverElement is guaranteed to be boolean here
+      setIsHovering(isHoverElement);
     };
 
     // Attach event listener

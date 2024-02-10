@@ -5,6 +5,7 @@
 body {
   background-color: black;
   cursor: default;
+  height: 200rem;
 }
 .cursor {
   @apply fixed w-5 h-5 bg-white rounded-full pointer-events-none mix-blend-difference cursor-none;
